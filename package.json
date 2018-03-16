@@ -9,6 +9,7 @@
   "scripts": {
     "build": "webpack",
     "test": "jest --coverage",
+    "prepare": "npm run build",
     "prepublish": "npm run test && npm run build"
   },
   "keywords": [
