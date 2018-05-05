@@ -14,6 +14,7 @@ const ConnectedWidget = props =>
       senderPlaceHolder={props.senderPlaceHolder}
       profileAvatar={props.profileAvatar}
       showCloseButton={props.showCloseButton}
+      onClickClose={props.onClickClose}
       fullScreenMode={props.fullScreenMode}
       badge={props.badge}
     />
@@ -26,6 +27,7 @@ ConnectedWidget.propTypes = {
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,
   showCloseButton: PropTypes.bool,
+  onClickClose: PropTypes.func,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number
 };
@@ -35,6 +37,7 @@ ConnectedWidget.defaultProps = {
   subtitle: 'This is your chat subtitle',
   senderPlaceHolder: 'Type a message...',
   showCloseButton: true,
+  onClickClose: () => {},
   fullScreenMode: false,
   badge: 0
 };

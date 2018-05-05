@@ -19,6 +19,7 @@ const WidgetLayout = props =>
         toggleChat={props.onToggleConversation}
         showChat={props.showChat}
         showCloseButton={props.showCloseButton}
+        onClickClose={props.onClickClose}
         disabledInput={props.disabledInput}
       />
     }
@@ -36,6 +37,7 @@ WidgetLayout.propTypes = {
   subtitle: PropTypes.string,
   onSendMessage: PropTypes.func,
   onToggleConversation: PropTypes.func,
+  onClickClose: PropTypes.func,
   showChat: PropTypes.bool,
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,

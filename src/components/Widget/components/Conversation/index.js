@@ -13,6 +13,7 @@ const Conversation = props =>
       subtitle={props.subtitle}
       toggleChat={props.toggleChat}
       showCloseButton={props.showCloseButton}
+      onClickClose={props.onClickClose}
     />
     <Messages
       profileAvatar={props.profileAvatar}
@@ -31,6 +32,7 @@ Conversation.propTypes = {
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,
   toggleChat: PropTypes.func,
+  onClickClose: PropTypes.func,
   showCloseButton: PropTypes.bool,
   disabledInput: PropTypes.bool
 };
