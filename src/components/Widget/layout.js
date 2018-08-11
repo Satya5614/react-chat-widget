@@ -6,10 +6,9 @@ import Conversation from './components/Conversation';
 import Launcher from './components/Launcher';
 import './style.scss';
 
-const WidgetLayout = props =>
+const WidgetLayout = props => (
   <div className={props.fullScreenMode ? 'widget-container full-screen' : 'widget-container'}>
-    {
-      props.showChat &&
+    {props.showChat && (
       <Conversation
         title={props.title}
         subtitle={props.subtitle}
@@ -21,16 +20,12 @@ const WidgetLayout = props =>
         showCloseButton={props.showCloseButton}
         onClickClose={props.onClickClose}
         disabledInput={props.disabledInput}
+        onClickAttachment={props.onClickAttachment}
       />
-    }
-    {
-      !props.fullScreenMode &&
-      <Launcher
-        toggle={props.onToggleConversation}
-        badge={props.badge}
-      />
-    }
-  </div>;
+    )}
+    {!props.fullScreenMode && <Launcher toggle={props.onToggleConversation} badge={props.badge} />}
+  </div>
+);
 
 WidgetLayout.propTypes = {
   title: PropTypes.string,
@@ -44,6 +39,7 @@ WidgetLayout.propTypes = {
   showCloseButton: PropTypes.bool,
   disabledInput: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
+  onClickAttachment: PropTypes.func,
   badge: PropTypes.number
 };
 

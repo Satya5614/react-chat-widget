@@ -14,7 +14,7 @@ class Widget extends Component {
 
   toggleConversation = () => {
     this.props.dispatch(toggleChat());
-  }
+  };
 
   handleMessageSubmit = (event) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ class Widget extends Component {
       this.props.handleNewUserMessage(userInput);
     }
     event.target.message.value = '';
-  }
+  };
 
   render() {
     return (
@@ -39,6 +39,7 @@ class Widget extends Component {
         onClickClose={this.props.onClickClose}
         fullScreenMode={this.props.fullScreenMode}
         badge={this.props.badge}
+        onClickAttachment={this.props.onClickAttachment}
       />
     );
   }
@@ -52,6 +53,7 @@ Widget.propTypes = {
   profileAvatar: PropTypes.string,
   showCloseButton: PropTypes.bool,
   onClickClose: PropTypes.func,
+  onClickAttachment: PropTypes.func,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number
 };

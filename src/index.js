@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import Widget from './components/Widget';
 import store from '../src/store/store';
 
-const ConnectedWidget = props =>
+const ConnectedWidget = props => (
   <Provider store={store}>
     <Widget
       title={props.title}
@@ -17,8 +17,10 @@ const ConnectedWidget = props =>
       onClickClose={props.onClickClose}
       fullScreenMode={props.fullScreenMode}
       badge={props.badge}
+      onClickAttachment={props.onClickAttachment}
     />
-  </Provider>;
+  </Provider>
+);
 
 ConnectedWidget.propTypes = {
   title: PropTypes.string,
@@ -28,6 +30,7 @@ ConnectedWidget.propTypes = {
   profileAvatar: PropTypes.string,
   showCloseButton: PropTypes.bool,
   onClickClose: PropTypes.func,
+  onClickAttachment: PropTypes.func,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number
 };
@@ -39,6 +42,7 @@ ConnectedWidget.defaultProps = {
   showCloseButton: true,
   onClickClose: () => {},
   fullScreenMode: false,
+  onClickAttachment: () => {},
   badge: 0
 };
 
