@@ -21,6 +21,7 @@ const WidgetLayout = props => (
         onClickClose={props.onClickClose}
         disabledInput={props.disabledInput}
         onClickAttachment={props.onClickAttachment}
+        isUploading={props.isUploading}
       />
     )}
     {!props.fullScreenMode && <Launcher toggle={props.onToggleConversation} badge={props.badge} />}
@@ -40,7 +41,8 @@ WidgetLayout.propTypes = {
   disabledInput: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   onClickAttachment: PropTypes.func,
-  badge: PropTypes.number
+  badge: PropTypes.number,
+  isUploading: PropTypes.bool
 };
 
 export default connect(store => ({

@@ -40,6 +40,7 @@ class Widget extends Component {
         fullScreenMode={this.props.fullScreenMode}
         badge={this.props.badge}
         onClickAttachment={this.props.onClickAttachment}
+        isUploading={this.props.isUploading}
       />
     );
   }
@@ -55,7 +56,8 @@ Widget.propTypes = {
   onClickClose: PropTypes.func,
   onClickAttachment: PropTypes.func,
   fullScreenMode: PropTypes.bool,
-  badge: PropTypes.number
+  badge: PropTypes.number,
+  isUploading: PropTypes.bool
 };
 
 export default connect()(Widget);

@@ -18,6 +18,7 @@ const ConnectedWidget = props => (
       fullScreenMode={props.fullScreenMode}
       badge={props.badge}
       onClickAttachment={props.onClickAttachment}
+      isUploading={props.isUploading}
     />
   </Provider>
 );
@@ -32,7 +33,8 @@ ConnectedWidget.propTypes = {
   onClickClose: PropTypes.func,
   onClickAttachment: PropTypes.func,
   fullScreenMode: PropTypes.bool,
-  badge: PropTypes.number
+  badge: PropTypes.number,
+  isUploading: PropTypes.bool
 };
 
 ConnectedWidget.defaultProps = {

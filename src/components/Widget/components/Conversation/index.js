@@ -15,7 +15,7 @@ const Conversation = props => (
       showCloseButton={props.showCloseButton}
       onClickClose={props.onClickClose}
     />
-    <Messages profileAvatar={props.profileAvatar} />
+    <Messages profileAvatar={props.profileAvatar} isUploading={props.isUploading} />
     <Sender
       sendMessage={props.sendMessage}
       placeholder={props.senderPlaceHolder}
@@ -35,7 +35,8 @@ Conversation.propTypes = {
   onClickClose: PropTypes.func,
   onClickAttachment: PropTypes.func,
   showCloseButton: PropTypes.bool,
-  disabledInput: PropTypes.bool
+  disabledInput: PropTypes.bool,
+  isUploading: PropTypes.bool
 };
 
 export default Conversation;
