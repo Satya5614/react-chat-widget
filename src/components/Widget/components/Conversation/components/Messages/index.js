@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import ImmutablePropTypes from 'react-immutable-proptypes';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import ImmutablePropTypes from "react-immutable-proptypes";
+import { connect } from "react-redux";
 
-import './styles.scss';
+import "./styles.scss";
 
 const scrollToBottom = () => {
-  const messagesDiv = document.getElementById('messages');
+  const messagesDiv = document.getElementById("messages");
+  if (!messagesDiv) return;
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 };
 
@@ -20,9 +21,9 @@ class Messages extends Component {
   }
 
   getComponentToRender = (message) => {
-    const ComponentToRender = message.get('component');
-    if (message.get('type') === 'component') {
-      return <ComponentToRender {...message.get('props')} />;
+    const ComponentToRender = message.get("component");
+    if (message.get("type") === "component") {
+      return <ComponentToRender {...message.get("props")} />;
     }
     return <ComponentToRender message={message} />;
   };
@@ -32,9 +33,12 @@ class Messages extends Component {
       <div id="messages" className="messages-container">
         {this.props.messages.map((message, index) => (
           <div className="message" key={index}>
-            {this.props.profileAvatar &&
-            message.get('showAvatar') && (
-              <img src={this.props.profileAvatar} className="avatar" alt="profile" />
+            {this.props.profileAvatar && message.get("showAvatar") && (
+              <img
+                src={this.props.profileAvatar}
+                className="avatar"
+                alt="profile"
+              />
             )}
             {this.getComponentToRender(message)}
           </div>
@@ -52,9 +56,9 @@ class Messages extends Component {
 Messages.propTypes = {
   messages: ImmutablePropTypes.listOf(ImmutablePropTypes.map),
   profileAvatar: PropTypes.string,
-  isUploading: PropTypes.bool
+  isUploading: PropTypes.bool,
 };
 
-export default connect(store => ({
-  messages: store.messages
+export default connect((store) => ({
+  messages: store.messages,
 }))(Messages);

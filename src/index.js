@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
+import React from "react";
+import PropTypes from "prop-types";
+import { Provider } from "react-redux";
 
-import Widget from './components/Widget';
-import store from '../src/store/store';
+import Widget from "./components/Widget";
+import store from "../src/store/store";
 
-const ConnectedWidget = props => (
+const ConnectedWidget = (props) => (
   <Provider store={store}>
     <Widget
       title={props.title}
@@ -34,18 +34,18 @@ ConnectedWidget.propTypes = {
   onClickAttachment: PropTypes.func,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
-  isUploading: PropTypes.bool
+  isUploading: PropTypes.bool,
 };
 
 ConnectedWidget.defaultProps = {
-  title: 'Welcome',
-  subtitle: 'This is your chat subtitle',
-  senderPlaceHolder: 'Type a message...',
+  title: "Welcome",
+  subtitle: "This is your chat subtitle",
+  senderPlaceHolder: "Type a message...",
   showCloseButton: true,
   onClickClose: () => {},
   fullScreenMode: false,
   onClickAttachment: () => {},
-  badge: 0
+  badge: 0,
 };
 
 export default ConnectedWidget;

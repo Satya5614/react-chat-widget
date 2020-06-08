@@ -1,23 +1,32 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from "react";
+import Adapter from "enzyme-adapter-react-16";
+import { shallow, configure } from "enzyme";
 
-import { createNewMessage } from 'helper';
-import Message from '../index';
+import { createNewMessage } from "helper";
+import Message from "../index";
 
-describe('<Message />', () => {
+configure({ adapter: new Adapter() });
+describe("<Message />", () => {
   /* eslint-disable no-underscore-dangle */
-  const createMessageComponent = message => shallow(<Message message={message} />);
+  const createMessageComponent = (message) =>
+    shallow(<Message message={message} />);
 
-  it('should render a <strong> element', () => {
-    const message = createNewMessage('New message with **Markdown**!');
+  it("should render a <strong> element", () => {
+    const message = createNewMessage("New message with **Markdown**!");
     const messageComponent = createMessageComponent(message);
-    expect(messageComponent.find('.message-text').getNode().props.dangerouslySetInnerHTML.__html).toMatchSnapshot();
+    expect(
+      messageComponent.find(".message-text").getElement().props
+        .dangerouslySetInnerHTML.__html
+    ).toMatchSnapshot();
   });
 
-  it('should reder a <em> element', () => {
-    const message = createNewMessage('New message with *Markdown*!');
+  it("should reder a <em> element", () => {
+    const message = createNewMessage("New message with *Markdown*!");
     const messageComponent = createMessageComponent(message);
-    expect(messageComponent.find('.message-text').getNode().props.dangerouslySetInnerHTML.__html).toMatchSnapshot();
+    expect(
+      messageComponent.find(".message-text").getElement().props
+        .dangerouslySetInnerHTML.__html
+    ).toMatchSnapshot();
   });
   /* eslint-enable */
 });
