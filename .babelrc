@@ -1,20 +1,17 @@
 {
   "presets": [
-    "es2015",
-    "react" 
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      }
+    }],
+    ["@babel/preset-react", {
+      "runtime": "automatic"
+    }],
+    "@babel/preset-typescript"
   ],
   "plugins": [
-    "transform-class-properties",
-    ["module-resolver", {
-      "root": ["./src"],
-      "alias": {
-        "constants": "./src/constants.js",
-        "assets": "./assets",
-        "tests-mocks": "./mocks",
-        "actions": "./src/store/actions",
-        "helper": "./src/store/reducers/helper.js",
-        "messagesComponents": "./src/components/Widget/components/Conversation/components/Messages/components"
-      }
-    }]
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
   ]
 }

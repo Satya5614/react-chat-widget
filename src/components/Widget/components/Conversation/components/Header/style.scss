@@ -1,8 +1,9 @@
-@import "variables.scss";
-@import "common.scss";
+@import 'variables/colors';
+@import 'common';
 
-.conversation-container {
-  .header {
+.rcw-conversation-container {
+
+  .rcw-header {
     background-color: $turqois-1;
     border-radius: 10px 10px 0 0;
     color: $white;
@@ -12,51 +13,61 @@
     padding: 15px 0 25px;
   }
 
-  .title {
+  .rcw-title {
     font-size: 24px;
     margin: 0;
     padding: 15px 0;
   }
 
-  .close-button {
+  .rcw-close-button {
     display: none;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 10px;
+    vertical-align: middle;
   }
 }
 
-.full-screen {
+.rcw-full-screen {
 
-  .header {
+  .rcw-header {
     @include header-fs;
   }
 
-  .title {
+  .rcw-title {
     @include title-fs;
   }
 
-  .close-button {
+  .rcw-close-button {
     @include close-button-fs;
   }
 
-  .close {
+  .rcw-close {
     @include close-fs;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .conversation-container {
-    .header {
+
+  .rcw-conversation-container {
+
+    .rcw-header {
       @include header-fs;
     }
 
-    .title {
+    .rcw-title {
       @include title-fs;
     }
 
-    .close-button {
+    .rcw-close-button {
       @include close-button-fs;
     }
 
-    .close {
+    .rcw-close {
       @include close-fs;
     }
   }

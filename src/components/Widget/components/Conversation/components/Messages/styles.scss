@@ -1,23 +1,24 @@
-@import "variables.scss";
-@import "common.scss";
+@import 'variables/colors';
+@import 'common';
 
-.messages-container {
+.rcw-messages-container {
   background-color: $white;
   height: 50vh;
   max-height: 410px;
   overflow-y: scroll;
   padding-top: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
-.full-screen {
+.rcw-full-screen {
 
-  .messages-container {
+  .rcw-messages-container {
     @include messages-container-fs;
   }
 }
 
 @media screen and (max-width: 800px)  {
-  .messages-container {
+  .rcw-messages-container {
     @include messages-container-fs;
   }
 }

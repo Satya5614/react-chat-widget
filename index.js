@@ -1,3 +1,5 @@
+import 'react/jsx-runtime';
+
 import ConnectedWidget from './src';
 import {
   addUserMessage,
@@ -6,8 +8,14 @@ import {
   renderCustomComponent,
   toggleWidget,
   toggleInputDisabled,
-  dropMessages
-} from './src/store/actions/dispatcher';
+  toggleMsgLoader,
+  dropMessages,
+  isWidgetOpened,
+  setQuickButtons,
+  deleteMessages,
+  markAllAsRead,
+  setBadgeCount
+} from './src/store/dispatcher';
 
 export {
   ConnectedWidget as Widget,
@@ -17,5 +25,11 @@ export {
   renderCustomComponent,
   toggleWidget,
   toggleInputDisabled,
-  dropMessages
+  toggleMsgLoader,
+  dropMessages,
+  isWidgetOpened,
+  setQuickButtons,
+  deleteMessages,
+  markAllAsRead,
+  setBadgeCount
 };
