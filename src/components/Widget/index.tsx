@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useDispatch } from "react-redux";
 
-import { toggleChat, addUserMessage } from '../../store/actions';
-import { AnyFunction } from '../../utils/types';
+import { toggleChat, addUserMessage } from "../../store/actions";
+import { AnyFunction } from "../../utils/types";
 
-import WidgetLayout from './layout';
+import WidgetLayout from "./layout";
 
 type Props = {
   title: string;
@@ -24,7 +24,9 @@ type Props = {
   launcherCloseLabel: string;
   sendButtonAlt: string;
   showTimeStamp: boolean;
-}
+  onClickClose: () => void;
+  onClickAttachment: () => void;
+};
 
 function Widget({
   title,
@@ -43,13 +45,15 @@ function Widget({
   launcherOpenLabel,
   launcherCloseLabel,
   sendButtonAlt,
-  showTimeStamp
+  showTimeStamp,
+  onClickClose,
+  onClickAttachment,
 }: Props) {
   const dispatch = useDispatch();
 
   const toggleConversation = () => {
     dispatch(toggleChat());
-  }
+  };
 
   const handleMessageSubmit = (event) => {
     event.preventDefault();
@@ -58,13 +62,13 @@ function Widget({
       dispatch(addUserMessage(userInput));
       handleNewUserMessage(userInput);
     }
-    event.target.message.value = '';
-  }
+    event.target.message.value = "";
+  };
 
   const onQuickButtonClicked = (event, value) => {
     event.preventDefault();
-    handleQuickButtonClicked?.(value)
-  }
+    handleQuickButtonClicked?.(value);
+  };
 
   return (
     <WidgetLayout
@@ -86,6 +90,8 @@ function Widget({
       launcherCloseLabel={launcherCloseLabel}
       sendButtonAlt={sendButtonAlt}
       showTimeStamp={showTimeStamp}
+      onClickClose={onClickClose}
+      onClickAttachment={onClickAttachment}
     />
   );
 }

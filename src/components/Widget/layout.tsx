@@ -1,14 +1,14 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import cn from 'classnames';
+import React from "react";
+import { useSelector } from "react-redux";
+import cn from "classnames";
 
-import { GlobalState } from 'src/store/types';
-import { AnyFunction } from 'src/utils/types';
+import { GlobalState } from "src/store/types";
+import { AnyFunction } from "src/utils/types";
 
-import Conversation from './components/Conversation';
-import Launcher from './components/Launcher';
+import Conversation from "./components/Conversation";
+import Launcher from "./components/Launcher";
 
-import './style.scss';
+import "./style.scss";
 
 type Props = {
   title: string;
@@ -29,7 +29,9 @@ type Props = {
   launcherCloseLabel: string;
   sendButtonAlt: string;
   showTimeStamp: boolean;
-}
+  onClickClose: () => void;
+  onClickAttachment: () => void;
+};
 
 function WidgetLayout({
   title,
@@ -49,15 +51,21 @@ function WidgetLayout({
   launcherOpenLabel,
   launcherCloseLabel,
   sendButtonAlt,
-  showTimeStamp
+  showTimeStamp,
+  onClickClose,
+  onClickAttachment,
 }: Props) {
   const { dissableInput, showChat } = useSelector((state: GlobalState) => ({
     showChat: state.behavior.showChat,
-    dissableInput: state.behavior.disabledInput
+    dissableInput: state.behavior.disabledInput,
   }));
 
   return (
-    <div className={cn('rcw-widget-container', { 'rcw-full-screen': fullScreenMode })}>
+    <div
+      className={cn("rcw-widget-container", {
+        "rcw-full-screen": fullScreenMode,
+      })}
+    >
       <Conversation
         title={title}
         subtitle={subtitle}
@@ -69,22 +77,24 @@ function WidgetLayout({
         disabledInput={dissableInput}
         autofocus={autofocus}
         titleAvatar={titleAvatar}
-        className={showChat ? 'active' : 'hidden'}
+        className={showChat ? "active" : "hidden"}
         onQuickButtonClicked={onQuickButtonClicked}
         onTextInputChange={onTextInputChange}
         sendButtonAlt={sendButtonAlt}
         showTimeStamp={showTimeStamp}
+        onClickClose={onClickClose}
+        onCLickAttachment={onClickAttachment}
       />
-      {customLauncher ?
-        customLauncher(onToggleConversation) :
-        !fullScreenMode &&
-        <Launcher
-          toggle={onToggleConversation}
-          chatId={chatId}
-          openLabel={launcherOpenLabel}
-          closeLabel={launcherCloseLabel}
-        />
-      }
+      {customLauncher
+        ? customLauncher(onToggleConversation)
+        : !fullScreenMode && (
+            <Launcher
+              toggle={onToggleConversation}
+              chatId={chatId}
+              openLabel={launcherOpenLabel}
+              closeLabel={launcherCloseLabel}
+            />
+          )}
     </div>
   );
 }

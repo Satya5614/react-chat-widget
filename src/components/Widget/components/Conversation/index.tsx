@@ -1,14 +1,14 @@
-import React from 'react';
-import cn from 'classnames';
+import React from "react";
+import cn from "classnames";
 
-import Header from './components/Header';
-import Messages from './components/Messages';
-import Sender from './components/Sender';
-import QuickButtons from './components/QuickButtons';
+import Header from "./components/Header";
+import Messages from "./components/Messages";
+import Sender from "./components/Sender";
+import QuickButtons from "./components/QuickButtons";
 
-import { AnyFunction } from '../../../../utils/types';
+import { AnyFunction } from "../../../../utils/types";
 
-import './style.scss';
+import "./style.scss";
 
 type Props = {
   title: string;
@@ -26,6 +26,8 @@ type Props = {
   onTextInputChange?: (event: any) => void;
   sendButtonAlt: string;
   showTimeStamp: boolean;
+  onClickClose: () => void;
+  onCLickAttachment: () => void;
 };
 
 function Conversation({
@@ -43,16 +45,22 @@ function Conversation({
   onQuickButtonClicked,
   onTextInputChange,
   sendButtonAlt,
-  showTimeStamp
+  showTimeStamp,
+  onClickClose,
+  onCLickAttachment,
 }: Props) {
   return (
-    <div className={cn('rcw-conversation-container', className)} aria-live="polite">
+    <div
+      className={cn("rcw-conversation-container", className)}
+      aria-live="polite"
+    >
       <Header
         title={title}
         subtitle={subtitle}
         toggleChat={toggleChat}
         showCloseButton={showCloseButton}
         titleAvatar={titleAvatar}
+        onClickClose={onClickClose}
       />
       <Messages profileAvatar={profileAvatar} showTimeStamp={showTimeStamp} />
       <QuickButtons onQuickButtonClicked={onQuickButtonClicked} />
@@ -63,6 +71,7 @@ function Conversation({
         autofocus={autofocus}
         onTextInputChange={onTextInputChange}
         buttonAlt={sendButtonAlt}
+        onClickAttachment={onCLickAttachment}
       />
     </div>
   );
