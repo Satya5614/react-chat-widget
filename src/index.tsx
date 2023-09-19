@@ -27,6 +27,9 @@ type Props = {
   showTimeStamp?: boolean;
   onClickClose: () => void;
   onClickAttachment: () => void;
+  showPreview?: boolean;
+  previewImage?: string;
+  onPreviewClose?: () => void;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -49,6 +52,9 @@ function ConnectedWidget({
   showTimeStamp,
   onClickClose,
   onClickAttachment,
+  showPreview,
+  previewImage,
+  onPreviewClose,
 }: Props) {
   return (
     <Provider store={store}>
@@ -72,6 +78,9 @@ function ConnectedWidget({
         showTimeStamp={showTimeStamp}
         onClickClose={onClickClose}
         onClickAttachment={onClickAttachment}
+        showPreview={showPreview}
+        previewImage={previewImage}
+        onPreviewClose={onPreviewClose}
       />
     </Provider>
   );

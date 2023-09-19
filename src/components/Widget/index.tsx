@@ -26,6 +26,9 @@ type Props = {
   showTimeStamp: boolean;
   onClickClose: () => void;
   onClickAttachment: () => void;
+  showPreview?: boolean;
+  previewImage?: string;
+  onPreviewClose?: () => void;
 };
 
 function Widget({
@@ -48,6 +51,9 @@ function Widget({
   showTimeStamp,
   onClickClose,
   onClickAttachment,
+  showPreview,
+  previewImage,
+  onPreviewClose,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -57,12 +63,16 @@ function Widget({
 
   const handleMessageSubmit = (event) => {
     event.preventDefault();
-    const userInput = event.target.message.value;
-    if (userInput.trim()) {
-      dispatch(addUserMessage(userInput));
-      handleNewUserMessage(userInput);
+    if (showPreview) {
+      handleNewUserMessage("");
+    } else {
+      const userInput = event.target.message.value;
+      if (userInput.trim()) {
+        dispatch(addUserMessage(userInput));
+        handleNewUserMessage(userInput);
+      }
+      event.target.message.value = "";
     }
-    event.target.message.value = "";
   };
 
   const onQuickButtonClicked = (event, value) => {
@@ -92,6 +102,9 @@ function Widget({
       showTimeStamp={showTimeStamp}
       onClickClose={onClickClose}
       onClickAttachment={onClickAttachment}
+      showPreview={showPreview}
+      previewImage={previewImage}
+      onPreviewClose={onPreviewClose}
     />
   );
 }

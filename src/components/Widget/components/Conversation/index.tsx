@@ -28,6 +28,9 @@ type Props = {
   showTimeStamp: boolean;
   onClickClose: () => void;
   onCLickAttachment: () => void;
+  showPreview?: boolean;
+  previewImage?: string;
+  onPreviewClose?: () => void;
 };
 
 function Conversation({
@@ -48,6 +51,9 @@ function Conversation({
   showTimeStamp,
   onClickClose,
   onCLickAttachment,
+  showPreview,
+  previewImage,
+  onPreviewClose,
 }: Props) {
   return (
     <div
@@ -72,6 +78,9 @@ function Conversation({
         onTextInputChange={onTextInputChange}
         buttonAlt={sendButtonAlt}
         onClickAttachment={onCLickAttachment}
+        showPreview={showPreview}
+        previewImage={previewImage}
+        onPreviewClose={onPreviewClose}
       />
     </div>
   );

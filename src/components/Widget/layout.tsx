@@ -31,6 +31,9 @@ type Props = {
   showTimeStamp: boolean;
   onClickClose: () => void;
   onClickAttachment: () => void;
+  showPreview?: boolean;
+  previewImage?: string;
+  onPreviewClose?: () => void;
 };
 
 function WidgetLayout({
@@ -54,6 +57,9 @@ function WidgetLayout({
   showTimeStamp,
   onClickClose,
   onClickAttachment,
+  showPreview,
+  previewImage,
+  onPreviewClose,
 }: Props) {
   const { dissableInput, showChat } = useSelector((state: GlobalState) => ({
     showChat: state.behavior.showChat,
@@ -84,6 +90,9 @@ function WidgetLayout({
         showTimeStamp={showTimeStamp}
         onClickClose={onClickClose}
         onCLickAttachment={onClickAttachment}
+        showPreview={showPreview}
+        previewImage={previewImage}
+        onPreviewClose={onPreviewClose}
       />
       {customLauncher
         ? customLauncher(onToggleConversation)

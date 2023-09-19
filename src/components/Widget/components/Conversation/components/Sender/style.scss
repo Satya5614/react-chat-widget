@@ -39,6 +39,21 @@
   }
 }
 
+.rcw-attachment-btn {
+  border: 0;
+
+  .rcw-attachment-icon {
+    height: 25px;
+  }
+}
+
+.rcw-preview-attachment {
+  height: 50px;
+  width: 50px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
 @media screen and (max-width: 800px)  {
   .rcw-sender {
     border-radius: 0;
