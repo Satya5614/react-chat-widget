@@ -34,6 +34,7 @@ type Props = {
   showPreview?: boolean;
   previewImage?: string;
   onPreviewClose?: () => void;
+  renderPreviewComponent?: (props: any) => JSX.Element;
 };
 
 function WidgetLayout({
@@ -60,6 +61,7 @@ function WidgetLayout({
   showPreview,
   previewImage,
   onPreviewClose,
+  renderPreviewComponent,
 }: Props) {
   const { dissableInput, showChat } = useSelector((state: GlobalState) => ({
     showChat: state.behavior.showChat,
@@ -93,6 +95,7 @@ function WidgetLayout({
         showPreview={showPreview}
         previewImage={previewImage}
         onPreviewClose={onPreviewClose}
+        renderPreviewComponent={renderPreviewComponent}
       />
       {customLauncher
         ? customLauncher(onToggleConversation)

@@ -30,6 +30,7 @@ type Props = {
   showPreview?: boolean;
   previewImage?: string;
   onPreviewClose?: () => void;
+  renderPreviewComponent?: (props: any) => JSX.Element;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -55,6 +56,7 @@ function ConnectedWidget({
   showPreview,
   previewImage,
   onPreviewClose,
+  renderPreviewComponent,
 }: Props) {
   return (
     <Provider store={store}>
@@ -81,6 +83,7 @@ function ConnectedWidget({
         showPreview={showPreview}
         previewImage={previewImage}
         onPreviewClose={onPreviewClose}
+        renderPreviewComponent={renderPreviewComponent}
       />
     </Provider>
   );

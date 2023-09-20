@@ -29,6 +29,7 @@ type Props = {
   showPreview?: boolean;
   previewImage?: string;
   onPreviewClose?: () => void;
+  renderPreviewComponent?: (props: any) => JSX.Element;
 };
 
 function Widget({
@@ -54,6 +55,7 @@ function Widget({
   showPreview,
   previewImage,
   onPreviewClose,
+  renderPreviewComponent,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -64,7 +66,8 @@ function Widget({
   const handleMessageSubmit = (event) => {
     event.preventDefault();
     if (showPreview) {
-      handleNewUserMessage("");
+      const userInput = event.target.message.value;
+      handleNewUserMessage(userInput);
     } else {
       const userInput = event.target.message.value;
       if (userInput.trim()) {
@@ -105,6 +108,7 @@ function Widget({
       showPreview={showPreview}
       previewImage={previewImage}
       onPreviewClose={onPreviewClose}
+      renderPreviewComponent={renderPreviewComponent}
     />
   );
 }

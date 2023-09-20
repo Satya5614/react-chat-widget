@@ -31,6 +31,7 @@ type Props = {
   showPreview?: boolean;
   previewImage?: string;
   onPreviewClose?: () => void;
+  renderPreviewComponent?: (props: any) => JSX.Element;
 };
 
 function Conversation({
@@ -54,6 +55,7 @@ function Conversation({
   showPreview,
   previewImage,
   onPreviewClose,
+  renderPreviewComponent,
 }: Props) {
   return (
     <div
@@ -81,6 +83,7 @@ function Conversation({
         showPreview={showPreview}
         previewImage={previewImage}
         onPreviewClose={onPreviewClose}
+        renderPreviewComponent={renderPreviewComponent}
       />
     </div>
   );
