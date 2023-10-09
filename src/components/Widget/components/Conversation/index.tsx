@@ -29,9 +29,8 @@ type Props = {
   onClickClose: () => void;
   onCLickAttachment: () => void;
   showPreview?: boolean;
-  previewImage?: string;
-  onPreviewClose?: () => void;
   renderPreviewComponent?: (props: any) => JSX.Element;
+  renderTitleAvatar?: (props: any) => JSX.Element;
 };
 
 function Conversation({
@@ -53,9 +52,8 @@ function Conversation({
   onClickClose,
   onCLickAttachment,
   showPreview,
-  previewImage,
-  onPreviewClose,
   renderPreviewComponent,
+  renderTitleAvatar,
 }: Props) {
   return (
     <div
@@ -69,6 +67,7 @@ function Conversation({
         showCloseButton={showCloseButton}
         titleAvatar={titleAvatar}
         onClickClose={onClickClose}
+        renderTitleAvatar={renderTitleAvatar}
       />
       <Messages profileAvatar={profileAvatar} showTimeStamp={showTimeStamp} />
       <QuickButtons onQuickButtonClicked={onQuickButtonClicked} />
@@ -81,8 +80,6 @@ function Conversation({
         buttonAlt={sendButtonAlt}
         onClickAttachment={onCLickAttachment}
         showPreview={showPreview}
-        previewImage={previewImage}
-        onPreviewClose={onPreviewClose}
         renderPreviewComponent={renderPreviewComponent}
       />
     </div>

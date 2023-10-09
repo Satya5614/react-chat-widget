@@ -28,9 +28,8 @@ type Props = {
   onClickClose: () => void;
   onClickAttachment: () => void;
   showPreview?: boolean;
-  previewImage?: string;
-  onPreviewClose?: () => void;
   renderPreviewComponent?: (props: any) => JSX.Element;
+  renderTitleAvatar?: (props: any) => JSX.Element;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -54,9 +53,8 @@ function ConnectedWidget({
   onClickClose,
   onClickAttachment,
   showPreview,
-  previewImage,
-  onPreviewClose,
   renderPreviewComponent,
+  renderTitleAvatar,
 }: Props) {
   return (
     <Provider store={store}>
@@ -81,9 +79,8 @@ function ConnectedWidget({
         onClickClose={onClickClose}
         onClickAttachment={onClickAttachment}
         showPreview={showPreview}
-        previewImage={previewImage}
-        onPreviewClose={onPreviewClose}
         renderPreviewComponent={renderPreviewComponent}
+        renderTitleAvatar={renderTitleAvatar}
       />
     </Provider>
   );

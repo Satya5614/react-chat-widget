@@ -27,9 +27,8 @@ type Props = {
   onClickClose: () => void;
   onClickAttachment: () => void;
   showPreview?: boolean;
-  previewImage?: string;
-  onPreviewClose?: () => void;
   renderPreviewComponent?: (props: any) => JSX.Element;
+  renderTitleAvatar?: (props: any) => JSX.Element;
 };
 
 function Widget({
@@ -53,9 +52,8 @@ function Widget({
   onClickClose,
   onClickAttachment,
   showPreview,
-  previewImage,
-  onPreviewClose,
   renderPreviewComponent,
+  renderTitleAvatar,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -106,9 +104,8 @@ function Widget({
       onClickClose={onClickClose}
       onClickAttachment={onClickAttachment}
       showPreview={showPreview}
-      previewImage={previewImage}
-      onPreviewClose={onPreviewClose}
       renderPreviewComponent={renderPreviewComponent}
+      renderTitleAvatar={renderTitleAvatar}
     />
   );
 }

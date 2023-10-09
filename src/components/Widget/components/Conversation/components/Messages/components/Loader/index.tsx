@@ -1,19 +1,19 @@
-import React from 'react'; 
-import cn from 'classnames';
+import React from "react";
+import cn from "classnames";
 
-import './styles.scss';
+import "./styles.scss";
 
 type Props = {
   typing: boolean;
-}
+};
 
 function Loader({ typing }: Props) {
   return (
-    <div className={cn('loader', { active: typing })}>
-      <div className="loader-container">
-        <span className="loader-dots"></span>
-        <span className="loader-dots"></span>
-        <span className="loader-dots"></span>
+    <div className={cn("rcw-loader", { active: typing })}>
+      <div className="rcw-loader-container">
+        <span className="rcw-loader-dots"></span>
+        <span className="rcw-loader-dots"></span>
+        <span className="rcw-loader-dots"></span>
       </div>
     </div>
   );

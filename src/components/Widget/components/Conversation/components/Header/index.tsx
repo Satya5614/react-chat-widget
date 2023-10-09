@@ -11,6 +11,7 @@ type Props = {
   showCloseButton: boolean;
   titleAvatar?: string;
   onClickClose: () => void;
+  renderTitleAvatar?: (props: any) => JSX.Element;
 };
 
 function Header({
@@ -20,6 +21,7 @@ function Header({
   showCloseButton,
   titleAvatar,
   onClickClose,
+  renderTitleAvatar,
 }: Props) {
   return (
     <div className="rcw-header">
@@ -35,9 +37,10 @@ function Header({
         </button>
       )}
       <h4 className="rcw-title">
-        {titleAvatar && (
+        {renderTitleAvatar && renderTitleAvatar({})}
+        {/* {titleAvatar && (
           <img src={titleAvatar} className="avatar" alt="profile" />
-        )}
+        )} */}
         {title}
       </h4>
       <span>{subtitle}</span>

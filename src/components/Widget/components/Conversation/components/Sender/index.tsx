@@ -18,8 +18,6 @@ type Props = {
   onTextInputChange?: (event: any) => void;
   onClickAttachment: () => void;
   showPreview?: boolean;
-  previewImage?: string;
-  onPreviewClose?: () => void;
   renderPreviewComponent?: (props: any) => JSX.Element;
 };
 
@@ -32,8 +30,6 @@ function Sender({
   buttonAlt,
   onClickAttachment,
   showPreview,
-  previewImage,
-  onPreviewClose,
   renderPreviewComponent,
 }: Props) {
   const showChat = useSelector((state: GlobalState) => state.behavior.showChat);
