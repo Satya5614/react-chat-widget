@@ -31,6 +31,9 @@ type Props = {
   showPreview?: boolean;
   renderPreviewComponent?: (props: any) => JSX.Element;
   renderTitleAvatar?: (props: any) => JSX.Element;
+  showMicrophone?: boolean;
+  onClickMicrophone?: () => void;
+  isRecording?: boolean;
 };
 
 function Conversation({
@@ -54,6 +57,9 @@ function Conversation({
   showPreview,
   renderPreviewComponent,
   renderTitleAvatar,
+  showMicrophone,
+  onClickMicrophone,
+  isRecording,
 }: Props) {
   return (
     <div
@@ -81,6 +87,9 @@ function Conversation({
         onClickAttachment={onCLickAttachment}
         showPreview={showPreview}
         renderPreviewComponent={renderPreviewComponent}
+        showMicrophone={showMicrophone}
+        onClickMicrophone={onClickMicrophone}
+        isRecording={isRecording}
       />
     </div>
   );

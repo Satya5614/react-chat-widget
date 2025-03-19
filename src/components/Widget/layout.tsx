@@ -34,6 +34,9 @@ type Props = {
   showPreview?: boolean;
   renderPreviewComponent?: (props: any) => JSX.Element;
   renderTitleAvatar?: (props: any) => JSX.Element;
+  showMicrophone?: boolean;
+  onClickMicrophone?: () => void;
+  isRecording?: boolean;
 };
 
 function WidgetLayout({
@@ -60,6 +63,9 @@ function WidgetLayout({
   showPreview,
   renderPreviewComponent,
   renderTitleAvatar,
+  showMicrophone,
+  onClickMicrophone,
+  isRecording,
 }: Props) {
   const { dissableInput, showChat } = useSelector((state: GlobalState) => ({
     showChat: state.behavior.showChat,
@@ -93,6 +99,9 @@ function WidgetLayout({
         showPreview={showPreview}
         renderPreviewComponent={renderPreviewComponent}
         renderTitleAvatar={renderTitleAvatar}
+        showMicrophone={showMicrophone}
+        onClickMicrophone={onClickMicrophone}
+        isRecording={isRecording}
       />
       {customLauncher
         ? customLauncher(onToggleConversation)

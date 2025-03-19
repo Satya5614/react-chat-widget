@@ -29,6 +29,9 @@ type Props = {
   showPreview?: boolean;
   renderPreviewComponent?: (props: any) => JSX.Element;
   renderTitleAvatar?: (props: any) => JSX.Element;
+  showMicrophone?: boolean;
+  onClickMicrophone?: () => void;
+  isRecording?: boolean;
 };
 
 function Widget({
@@ -54,6 +57,9 @@ function Widget({
   showPreview,
   renderPreviewComponent,
   renderTitleAvatar,
+  showMicrophone,
+  onClickMicrophone,
+  isRecording,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -106,6 +112,9 @@ function Widget({
       showPreview={showPreview}
       renderPreviewComponent={renderPreviewComponent}
       renderTitleAvatar={renderTitleAvatar}
+      showMicrophone={showMicrophone}
+      onClickMicrophone={onClickMicrophone}
+      isRecording={isRecording}
     />
   );
 }

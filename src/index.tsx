@@ -30,6 +30,9 @@ type Props = {
   showPreview?: boolean;
   renderPreviewComponent?: (props: any) => JSX.Element;
   renderTitleAvatar?: (props: any) => JSX.Element;
+  showMicrophone?: boolean;
+  onClickMicrophone?: () => void;
+  isRecording?: boolean;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -55,6 +58,9 @@ function ConnectedWidget({
   showPreview,
   renderPreviewComponent,
   renderTitleAvatar,
+  showMicrophone,
+  onClickMicrophone,
+  isRecording,
 }: Props) {
   return (
     <Provider store={store}>
@@ -81,6 +87,9 @@ function ConnectedWidget({
         showPreview={showPreview}
         renderPreviewComponent={renderPreviewComponent}
         renderTitleAvatar={renderTitleAvatar}
+        showMicrophone={showMicrophone}
+        onClickMicrophone={onClickMicrophone}
+        isRecording={isRecording}
       />
     </Provider>
   );

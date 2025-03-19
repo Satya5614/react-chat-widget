@@ -6,6 +6,7 @@ import { GlobalState } from "src/store/types";
 const send = require("../../../../../../../assets/send-message.svg") as string;
 const attachment = require("../../../../../../../assets/Attachment.svg") as string;
 const close = require("../../../../../../../assets/close-icon.svg") as string;
+const microphone = require("../../../../../../../assets/microphone.svg") as string;
 
 import "./style.scss";
 
@@ -19,6 +20,9 @@ type Props = {
   onClickAttachment: () => void;
   showPreview?: boolean;
   renderPreviewComponent?: (props: any) => JSX.Element;
+  showMicrophone?: boolean;
+  onClickMicrophone?: () => void;
+  isRecording?: boolean;
 };
 
 function Sender({
@@ -31,6 +35,9 @@ function Sender({
   onClickAttachment,
   showPreview,
   renderPreviewComponent,
+  showMicrophone,
+  onClickMicrophone,
+  isRecording,
 }: Props) {
   const showChat = useSelector((state: GlobalState) => state.behavior.showChat);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -41,57 +48,74 @@ function Sender({
 
   return (
     <form className="rcw-sender" onSubmit={sendMessage}>
-      <button
-        type="button"
-        className="rcw-attachment-btn"
-        onClick={onClickAttachment}
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          marginTop: "15px",
+        }}
       >
-        <img
-          src={attachment}
-          style={{ height: 25, width: 25 }}
-          className="rcw-attachment-icon"
-          alt="send"
-        />
-      </button>
-      {showPreview ? (
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            margin: "15px 0px",
-          }}
-        >
-          {renderPreviewComponent && renderPreviewComponent({})}
-          <input
-            style={{ width: "auto" }}
-            type="text"
-            className="rcw-new-message"
-            name="message"
-            ref={inputRef}
-            placeholder={placeholder}
-            disabled={disabledInput}
-            autoFocus={autofocus}
-            autoComplete="off"
-            onChange={onTextInputChange}
-          />
-        </div>
-      ) : (
+        {showPreview && renderPreviewComponent && renderPreviewComponent({})}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "row",
+          width: "100%",
+          marginBottom: "15px",
+        }}
+      >
+        {!isRecording && (
+          <>
+            <button
+              type="button"
+              className="rcw-attachment-btn"
+              onClick={onClickAttachment}
+              disabled={isRecording}
+            >
+              <img
+                src={attachment}
+                style={{ height: 25, width: 25 }}
+                className="rcw-attachment-icon"
+                alt="attachment"
+              />
+            </button>
+            {showMicrophone && (
+              <button
+                type="button"
+                className="rcw-attachment-btn"
+                onClick={onClickMicrophone}
+              >
+                <img
+                  src={microphone}
+                  style={{ height: 25, width: 25 }}
+                  className="rcw-attachment-icon"
+                  alt="microphone"
+                />
+              </button>
+            )}
+          </>
+        )}
         <input
           type="text"
           className="rcw-new-message"
           name="message"
           ref={inputRef}
           placeholder={placeholder}
-          disabled={disabledInput}
+          disabled={disabledInput || isRecording}
           autoFocus={autofocus}
           autoComplete="off"
           onChange={onTextInputChange}
+          style={{ display: isRecording ? "none" : "block" }}
         />
-      )}
-      <button type="submit" className="rcw-send">
-        <img src={send} className="rcw-send-icon" alt={buttonAlt} />
-      </button>
+        {!isRecording && (
+          <button type="submit" className="rcw-send" disabled={isRecording}>
+            <img src={send} className="rcw-send-icon" alt={buttonAlt} />
+          </button>
+        )}
+      </div>
     </form>
   );
 }
