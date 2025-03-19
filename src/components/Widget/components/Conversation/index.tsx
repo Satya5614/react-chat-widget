@@ -34,6 +34,7 @@ type Props = {
   showMicrophone?: boolean;
   onClickMicrophone?: () => void;
   isRecording?: boolean;
+  renderRecordingComponent?: () => JSX.Element;
 };
 
 function Conversation({
@@ -60,6 +61,7 @@ function Conversation({
   showMicrophone,
   onClickMicrophone,
   isRecording,
+  renderRecordingComponent,
 }: Props) {
   return (
     <div
@@ -90,6 +92,7 @@ function Conversation({
         showMicrophone={showMicrophone}
         onClickMicrophone={onClickMicrophone}
         isRecording={isRecording}
+        renderRecordingComponent={renderRecordingComponent}
       />
     </div>
   );

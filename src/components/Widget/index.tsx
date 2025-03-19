@@ -32,6 +32,7 @@ type Props = {
   showMicrophone?: boolean;
   onClickMicrophone?: () => void;
   isRecording?: boolean;
+  renderRecordingComponent?: () => JSX.Element;
 };
 
 function Widget({
@@ -60,6 +61,7 @@ function Widget({
   showMicrophone,
   onClickMicrophone,
   isRecording,
+  renderRecordingComponent,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -115,6 +117,7 @@ function Widget({
       showMicrophone={showMicrophone}
       onClickMicrophone={onClickMicrophone}
       isRecording={isRecording}
+      renderRecordingComponent={renderRecordingComponent}
     />
   );
 }

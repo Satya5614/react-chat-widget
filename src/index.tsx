@@ -33,6 +33,7 @@ type Props = {
   showMicrophone?: boolean;
   onClickMicrophone?: () => void;
   isRecording?: boolean;
+  renderRecordingComponent?: () => JSX.Element;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -61,6 +62,7 @@ function ConnectedWidget({
   showMicrophone,
   onClickMicrophone,
   isRecording,
+  renderRecordingComponent,
 }: Props) {
   return (
     <Provider store={store}>
@@ -90,6 +92,7 @@ function ConnectedWidget({
         showMicrophone={showMicrophone}
         onClickMicrophone={onClickMicrophone}
         isRecording={isRecording}
+        renderRecordingComponent={renderRecordingComponent}
       />
     </Provider>
   );

@@ -23,6 +23,7 @@ type Props = {
   showMicrophone?: boolean;
   onClickMicrophone?: () => void;
   isRecording?: boolean;
+  renderRecordingComponent?: () => JSX.Element;
 };
 
 function Sender({
@@ -38,6 +39,7 @@ function Sender({
   showMicrophone,
   onClickMicrophone,
   isRecording,
+  renderRecordingComponent,
 }: Props) {
   const showChat = useSelector((state: GlobalState) => state.behavior.showChat);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -48,25 +50,10 @@ function Sender({
 
   return (
     <form className="rcw-sender" onSubmit={sendMessage}>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          marginTop: "15px",
-        }}
-      >
+      <div className="rcw-sender-container">
         {showPreview && renderPreviewComponent && renderPreviewComponent({})}
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "row",
-          width: "100%",
-          marginBottom: "15px",
-        }}
-      >
+      <div className="rcw-sender-controls">
         {!isRecording && (
           <>
             <button
@@ -98,6 +85,12 @@ function Sender({
             )}
           </>
         )}
+        <div
+          className="rcw-recording-container"
+          style={{ display: isRecording ? "block" : "none" }}
+        >
+          {renderRecordingComponent && renderRecordingComponent()}
+        </div>
         <input
           type="text"
           className="rcw-new-message"
