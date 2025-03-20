@@ -48,8 +48,16 @@ function Sender({
     if (showChat) inputRef.current?.focus();
   }, [showChat]);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    sendMessage(e);
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+  };
+
   return (
-    <form className="rcw-sender" onSubmit={sendMessage}>
+    <form className="rcw-sender" onSubmit={handleSubmit}>
       <div className="rcw-sender-container">
         {showPreview && renderPreviewComponent && renderPreviewComponent({})}
       </div>
