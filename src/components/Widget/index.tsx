@@ -74,6 +74,7 @@ function Widget({
     if (showPreview) {
       const userInput = event.target.message.value;
       handleNewUserMessage(userInput);
+      event.target.message.value = "";
     } else {
       const userInput = event.target.message.value;
       if (userInput.trim()) {
