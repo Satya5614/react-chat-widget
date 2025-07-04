@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import { GlobalState } from "src/store/types";
 
 const send = require("../../../../../../../assets/send-message.svg") as string;
-const attachment = require("../../../../../../../assets/Attachment.svg") as string;
+const attachment =
+  require("../../../../../../../assets/Attachment.svg") as string;
 const close = require("../../../../../../../assets/close-icon.svg") as string;
 
 import "./style.scss";

@@ -11,12 +11,14 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "es2018",
     "jsx": "react",
     "allowJs": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true
   },
   "extends": "./tsconfig.paths.json",
   "include": ["src"],
